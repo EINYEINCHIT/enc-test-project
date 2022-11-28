@@ -1,0 +1,15 @@
+.header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    z-index: 1000;
+    &.collapsed {
+        width: calc(100% - 250px);
+        left: 250px;
+    }
+    .row {
+        border-bottom: 1px solid var(--color-light-gray);
+    }
+}

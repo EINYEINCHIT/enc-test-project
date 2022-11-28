@@ -1,0 +1,8 @@
+#main {
+    transition: margin-left .2s;
+    min-height: 100vh;
+    padding: 70px 0 50px 0;
+    &.open {
+        margin-left: 250px;
+    }
+}

@@ -1,0 +1,16 @@
+<div class="header" [class.collapsed]="!collapsedSideBar">
+    <div class="row no-gutters pd-top-bottom-5">
+        <div class="col-md-8 col-xs-6 pd-left-15"><span class="material-icons text-size20X cursor-pointer" (click)="toggleSidebar()" style="position: relative; top: 8px;">{{ collapsedSideBar ? 'close' : 'reorder' }}</span></div>
+        <div class="col-md-4 col-xs-6 pd-right-15">
+            <div class="clearfix">
+                <div class="pull-right pd-left-15">
+                    <div class="text-size1X text-bold">{{ email }}</div>
+                    <div class="text-size8X text-gray">Administrator</div>
+                </div>
+                <div class="pull-right">
+                    <img src="assets/img/no-photo.png" class="img-circle-thumbnail xs" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

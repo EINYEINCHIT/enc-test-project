@@ -1,0 +1,13 @@
+<div class="sidebar text-white bg-dark-gray" [class.open]="!collapsedSideBar">
+    <h1 class="pd-15 text-bold text-size15X">CRM App</h1>
+    <div class="pd-15 bg-black">
+        <h3 class="text-primary text-size1X text-bold">Navigation</h3>
+    </div>
+    <div class="pd-top-15">
+        <ul class="menu">
+            <li class="pd-15" [routerLink]="['/customer/list']" [routerLinkActive]="['active']"><span class="material-icons">person</span> <span class="pd-left-15">Customer</span></li>
+            <li class="pd-15" [routerLink]="['/customer/add']" [routerLinkActive]="['active']"><span class="material-icons">person_add</span> <span class="pd-left-15">Add Customer</span></li>
+            <li class="pd-15" (click)="logout()"><span class="material-icons">power_settings_new</span> <span class="pd-left-15">Logout</span></li>
+        </ul>
+    </div>    
+</div>

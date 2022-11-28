@@ -1,0 +1,110 @@
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col">
+            <ul class="breadcrumb clearfix">
+                <li><span>Dashboard</span></li>
+                <li><span class="material-icons">chevron_right</span></li>
+                <li><span>Customer</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">Customers</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <span class="text-size8X text-bold">Start Date:</span>
+                    <input type="date" class="form-input" [(ngModel)]="startDate">
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <span class="text-size8X text-bold">End Date:</span>
+                    <input type="date" class="form-input" [(ngModel)]="endDate" [min]="startDate">
+                </div>
+                <div class="col-xs-6 col-md-3" style="padding-top: 24px;">
+                    <button class="my-btn primary mg-right-15" (click)="doSearch()">Search</button>
+                    <button class="my-btn danger" (click)="doReset()">Reset</button>
+                </div>
+            </div>
+            <div class="row mg-top-bottom-15 no-gutters">
+                <div class="col-10">
+                    <select [(ngModel)]="limit" (change)="doSearch()" class="form-input auto">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span class="text-size8X pd-left-5">entries per page</span>
+                </div>
+                <div class="col-2">
+                    <input (keydown.enter)="doSearch()" [(ngModel)]="keyword" type="text" class="form-input" placeholder="Search ...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="my-table">
+                        <thead>
+                            <tr>
+                                <th class="hidden-xs hidden-sm">Photo</th>
+                                <th (click)="doSort('name')">
+                                    <span>Name</span>
+                                    <span *ngIf="orderBy == 'name'" class="material-icons text-size15X">
+                                        {{ orderAs == 'desc' ? 'arrow_drop_down' : 'arrow_drop_up' }}
+                                    </span>
+                                </th>
+                                <th class="hidden-xs">Email</th>
+                                <th>Phone</th>
+                                <th (click)="doSort('date_of_birth')" class="hidden-xs hidden-sm hidden-md">
+                                    <span>Birthday</span>
+                                    <span *ngIf="orderBy == 'date_of_birth'" class="material-icons text-size15X">
+                                        {{ orderAs == 'desc' ? 'arrow_drop_down' : 'arrow_drop_up' }}
+                                    </span>
+                                </th>
+                                <th (click)="doSort('gender')" class="hidden-xs hidden-sm hidden-md">
+                                    <span>Gender</span>
+                                    <span *ngIf="orderBy == 'gender'" class="material-icons text-size15X">
+                                        {{ orderAs == 'desc' ? 'arrow_drop_down' : 'arrow_drop_up' }}
+                                    </span>
+                                </th>
+                                <th>Nrc</th>
+                                <th (click)="doSort('created_at')" class="hidden-xs hidden-sm hidden-md">
+                                    <span>Created Date</span>
+                                    <span *ngIf="orderBy == 'created_at'" class="material-icons text-size15X">
+                                        {{ orderAs == 'desc' ? 'arrow_drop_down' : 'arrow_drop_up' }}
+                                    </span>
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let customer of customerList | paginate: {itemsPerPage: limit, currentPage: page, totalItems: total};">
+                                <td class="hidden-xs hidden-sm"><img [src]="customer.photo" alt="" class="img-square-thumbnail sm"></td>
+                                <td>{{ customer.name }}</td>
+                                <td class="hidden-xs">{{ customer.email }}</td>
+                                <td>{{ customer.phone_no }}</td>
+                                <td class="hidden-xs hidden-sm hidden-md">{{ customer.date_of_birth }}</td>
+                                <td class="hidden-xs hidden-sm hidden-md">{{ customer.gender }}</td>
+                                <td>{{ customer.nrc_code.code_no + '/' + customer.nrc_code.name + ' (' + customer.citizen_type + ') ' +customer.nrc_no }}</td>
+                                <td class="hidden-xs hidden-sm hidden-md">{{ customer.created_at | date: 'd MMM y h:mm a' }}</td>
+                                <td>
+                                    <button class="my-btn secondary sm mg-right-5 mg-bottom-5" (click)="doEdit(customer.id)">Edit</button>
+                                    <button class="my-btn danger sm" (click)="doDelete(customer.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-8">
+                    <span class="text-size8X">Showing 1 to {{ page }} of {{ total }} entries</span>
+                </div>
+                <div class="col-4 text-right">
+                    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="pagination($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

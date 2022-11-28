@@ -1,0 +1,42 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.text-size5X { font-size: var(--font-size-5X); }
+.text-size6X { font-size: var(--font-size-6X); }
+.text-size7X { font-size: var(--font-size-7X); }
+.text-size8X { font-size: var(--font-size-8X); }
+.text-size9X { font-size: var(--font-size-9X); }
+.text-size10X { font-size: var(--font-size-10X); }
+.text-size11X { font-size: var(--font-size-11X); }
+.text-size12X { font-size: var(--font-size-12X); }
+.text-size13X { font-size: var(--font-size-13X); }
+.text-size14X { font-size: var(--font-size-14X); }
+.text-size15X { font-size: var(--font-size-15X); }
+.text-size16X { font-size: var(--font-size-16X); }
+.text-size17X { font-size: var(--font-size-17X); }
+.text-size18X { font-size: var(--font-size-18X); }
+.text-size19X { font-size: var(--font-size-19X); }
+.text-size20X { font-size: var(--font-size-20X); }
+.text-size25X { font-size: var(--font-size-25X); }
+.text-size30X { font-size: var(--font-size-30X); }
+
+.text-bold { font-weight: bold; }
+.text-normal { font-weight: normal; }
+.text-light { font-weight: lighter; }
+.text-italic { font-style: italic; }
+.text-underline { text-decoration: underline; }
+.text-capatilize { text-transform: capitalize; }
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.text-white { color: var(--color-white); }
+.text-gray { color: var(--color-gray); };
+.text-light-gray { color: var(--color-light-gray); }
+.text-dark-gray { color: var(--color-dark-gray); }
+.text-black { color: var(--color-black); }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-danger { color: var(--color-danger); }

@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col">
+            <ul class="breadcrumb clearfix">
+                <li><span>Dashboard</span></li>
+                <li><span class="material-icons">chevron_right</span></li>
+                <li><span>{{ id == 0 ? 'Add' : 'Update' }} Customer</span></li>
+            </ul>
+        </div>
+    </div>
+    <form (ngSubmit)="onSubmit(customerForm)" [formGroup]="customerForm">
+        <div class="card">
+            <div class="card-header">{{ id == 0 ? 'Add' : 'Update' }} Customer Form</div>
+            <div class="card-body">  
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Photo:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <div class="mg-bottom-30" *ngIf="base64Photo">
+                            <img [src]="base64Photo" class="img-circle-thumbnail xl" alt="">
+                        </div>
+                        <div class="form-input-upload no-select" [class.error]="customerForm.get('photo')?.invalid && customerForm.get('photo')?.touched">
+                            <label class="p-absolute" style="left: 0; right: 0;">
+                                <span class="choose-file text-size8X">Choose File</span>
+                                <span class="choose-file-name text-size8X">{{ customerForm.get('photo')?.value ? customerForm.get('photo')?.value : 'No file chosen ...' }}</span>
+                                <input formControlName="photo" type="file" (change)="onFileSelected($event)" accept="image/*">
+                            </label>
+                            <div class="form-error-msg text-size8X mg-top-15">
+                                <span *ngIf="customerForm.get('photo')?.touched && customerForm.get('photo')?.invalid && customerForm.get('photo')?.value.length == 0">Please fill out this field.</span>
+                            </div>
+                        </div> 
+                    </div>
+                </div> <!-- end of photo -->
+                <div class="row mg-top-30">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Email:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="email" type="text" class="form-input" [class.error]="customerForm.get('email')?.invalid && customerForm.get('email')?.touched">
+                        <div class="form-error-msg text-size8X">
+                            <span *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid && customerForm.get('email')?.value.length == 0">Please fill out this field.</span>
+                            <span *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid && customerForm.get('email')?.value.length > 0">Invalid Input</span>
+                        </div>
+                    </div>
+                </div> <!-- end of email -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Password:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="password" type="password" class="form-input" [class.error]="customerForm.get('password')?.invalid && customerForm.get('password')?.touched">
+                        <div class="form-error-msg text-size8X">
+                            <span *ngIf="customerForm.get('password')?.touched && customerForm.get('password')?.invalid && customerForm.get('password')?.value.length == 0">Please fill out this field.</span>
+                            <span *ngIf="customerForm.get('password')?.touched && customerForm.get('password')?.invalid && customerForm.get('password')?.value.length > 0">At least 1 uppercase character, 1 lowercase character and 1 number</span>
+                        </div>
+                    </div>
+                </div> <!-- end of password -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Confirm Password:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="confirm_password" type="password" class="form-input" [class.error]="customerForm.get('confirm_password')?.invalid && customerForm.get('confirm_password')?.touched">
+                        <div class="form-error-msg text-size8X">
+                            <span *ngIf="customerForm.get('confirm_password')?.touched && customerForm.get('confirm_password')?.invalid && customerForm.get('confirm_password')?.value.length == 0">Please fill out this field.</span>
+                            <span *ngIf="customerForm.get('confirm_password')?.touched && customerForm.get('confirm_password')?.invalid && customerForm.get('confirm_password')?.value.length > 0">At least 1 uppercase character, 1 lowercase character and 1 number</span>
+                        </div>
+                    </div>
+                </div> <!-- end of confirm password -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Name:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="name" type="text" class="form-input" [class.error]="customerForm.get('name')?.invalid && customerForm.get('name')?.touched">
+                        <div class="form-error-msg text-size8X">
+                            <span *ngIf="customerForm.get('name')?.touched && customerForm.get('name')?.invalid && customerForm.get('name')?.value.length == 0">Please fill out this field.</span>
+                            <span *ngIf="customerForm.get('name')?.touched && customerForm.get('name')?.invalid && customerForm.get('name')?.value.length > 0">Must be between 3 and 9 characters long</span>
+                        </div>
+                    </div>
+                </div> <!-- end of name -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Phone Number:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="phone_no" type="text" class="form-input" [class.error]="customerForm.get('phone_no')?.invalid && customerForm.get('phone_no')?.touched">
+                        <div class="form-error-msg text-size8X">
+                            <span *ngIf="customerForm.get('phone_no')?.touched && customerForm.get('phone_no')?.invalid && customerForm.get('phone_no')?.value.length == 0">Please fill out this field.</span>
+                            <span *ngIf="customerForm.get('phone_no')?.touched && customerForm.get('phone_no')?.invalid && customerForm.get('phone_no')?.value.length > 0">Invalid Input</span>
+                        </div>
+                    </div>
+                </div> <!-- end of phone no -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">Birthday:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <input formControlName="date_of_birth" type="date" class="form-input" [class.error]="customerForm.get('date_of_birth')?.invalid && customerForm.get('date_of_birth')?.touched">
+                        <p class="form-error-msg text-size8X" *ngIf="customerForm.get('date_of_birth')?.invalid && customerForm.get('date_of_birth')?.touched">Please fill out this field.</p>
+                    </div>
+                </div> <!-- end of date_of_birth -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-4 col-md-2 pd-top-5 form-label">NRC:</div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <div class="row">
+                            <!-- nrc code no -->
+                            <div class="col-xs-6 col-sm-6 col-md-2 mg-bottom-5">
+                                <select formControlName="nrc_code" class="form-input" [class.error]="customerForm.get('nrc_code')?.invalid && customerForm.get('nrc_code')?.touched">
+                                    <ng-container *ngFor="let item of nrcCodeNumbers">
+                                        <option [value]="item">{{ item }}</option>
+                                    </ng-container>    
+                                </select>
+                                <p class="form-error-msg text-size8X" *ngIf="customerForm.get('nrc_code')?.invalid && customerForm.get('nrc_code')?.touched">Please fill out this field.</p>
+                            </div>
+                            <!-- nrc code name -->
+                            <div class="col-xs-6 col-sm-6 col-md-3 mg-bottom-5">
+                                <select formControlName="nrc_code_id" class="form-input" [class.error]="customerForm.get('nrc_code_id')?.invalid && customerForm.get('nrc_code_id')?.touched" [attr.disabled]="!customerForm.get('nrc_code')?.value ? true : null">
+                                    <ng-container *ngFor="let item of nrcCodes">
+                                        <option *ngIf="customerForm.get('nrc_code')?.value == item.code_no" [value]="item.id">{{ item.name }}</option>
+                                    </ng-container>    
+                                </select>
+                                <p class="form-error-msg text-size8X" *ngIf="customerForm.get('nrc_code_id')?.invalid && customerForm.get('nrc_code_id')?.touched">Please fill out this field.</p>
+                            </div>
+                            <!-- citizen type -->
+                            <div class="col-xs-6 col-sm-6 col-md-2">
+                                <select formControlName="citizen_type" class="form-input" [class.error]="customerForm.get('citizen_type')?.invalid && customerForm.get('citizen_type')?.touched">
+                                    <ng-container *ngFor="let item of citizenTypes">
+                                        <option [value]="item">{{ item }}</option>
+                                    </ng-container>    
+                                </select>
+                                <p class="form-error-msg text-size8X" *ngIf="customerForm.get('citizen_type')?.invalid && customerForm.get('citizen_type')?.touched">Please fill out this field.</p>
+                            </div> 
+                            <!-- nrc no -->
+                            <div class="col-xs-6 col-sm-6 col-md-2">
+                                <input formControlName="nrc_no" type="text" pattern="\d*" maxlength="6" class="form-input" [class.error]="customerForm.get('nrc_no')?.invalid && customerForm.get('nrc_no')?.touched">
+                                <div class="form-error-msg text-size8X">
+                                    <span *ngIf="customerForm.get('nrc_no')?.touched && customerForm.get('nrc_no')?.invalid && customerForm.get('nrc_no')?.value.length == 0">Please fill out this field.</span>
+                                    <span *ngIf="customerForm.get('nrc_no')?.touched && customerForm.get('nrc_no')?.invalid && customerForm.get('nrc_no')?.value.length > 0">Invalid Input</span>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div> <!-- end of nrc -->
+                <div class="row mg-top-15">
+                    <div class="col-xs-12 col-sm-6 col-md-2 pd-top-5 form-label">Gender:</div>
+                    <div class="col-xs-12 col-sm-6 col-md-10" style="padding-top: 5px;">
+                        <label><input formControlName="gender" name="gender" value="male" type="radio" class="form-input auto">Male</label> &nbsp;
+                        <label><input formControlName="gender" name="gender" value="female" type="radio" class="form-input auto">Female</label>
+                        <p class="form-error-msg text-size8X" *ngIf="customerForm.get('gender')?.invalid && customerForm.get('gender')?.touched">Please fill out this field.</p>
+                    </div>
+                </div> <!-- end of gender -->
+                <div class="row mg-top-30">
+                    <div class="col-sm-4 col-md-2 hidden-xs"></div>
+                    <div class="col-xs-12 col-sm-8 col-md-8">
+                        <button class="my-btn primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

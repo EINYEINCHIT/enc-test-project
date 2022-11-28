@@ -1,0 +1,28 @@
+<div id="login">
+    <form (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm">
+        <div class="card">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-bold text-center">Sign In</h1>
+                </div>
+                <div class="col-12 mg-top-30">
+                    <div class="form-input-prepand" [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                        <span class="material-icons text-size15X">email</span>
+                        <input formControlName="email" type="text" class="form-input" [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" placeholder="Email Address">
+                        <p class="form-error-msg text-size8X" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">Please fill out this field.</p>
+                    </div> 
+                </div>
+                <div class="col-12 mg-top-15">
+                    <div class="form-input-prepand" [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                        <span class="material-icons text-size15X">enhanced_encryption</span>
+                        <input formControlName="password" type="text" class="form-input" [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" placeholder="Password">
+                        <p class="form-error-msg text-size8X" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">Please fill out this field.</p>
+                    </div> 
+                </div>
+                <div class="col-12 mg-top-30 text-center">
+                    <button class="my-btn primary" type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>      

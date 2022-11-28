@@ -1,0 +1,27 @@
+.sidebar {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.2s;
+    &.open {
+        width: 250px;
+    }
+}
+
+.sidebar ul.menu {
+    li {
+        display: block;
+        transition: 0.2s;
+        cursor: pointer;
+        &.active, &:hover {
+            background-color: var(--color-black);
+        }
+        .material-icons {
+            top: 5px;
+            position: relative;
+        }
+    }
+}

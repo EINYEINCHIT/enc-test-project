@@ -1,0 +1,5 @@
+<app-header (collapsedEvent)="receiveCollapsed($event)"></app-header>
+<app-sidebar [collapsedSideBar]="collapsedSideBar"></app-sidebar>
+<div id="main" [class.open]="!collapsedSideBar">
+    <router-outlet></router-outlet>
+</div>

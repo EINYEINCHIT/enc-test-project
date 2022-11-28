@@ -1,0 +1,58 @@
+﻿@import "my-theme/common.css";
+@import "my-theme/grid.css";
+@import "my-theme/image.css";
+@import "my-theme/spacing.css";
+@import "my-theme/text.css";
+@import "reset.css";
+
+:root {
+    --color-white: #ffffff;
+    --color-gray: #5d5d5d;
+    --color-light-gray: #dddddd;
+    --color-dark-gray: #1d1d1d;
+    --color-black: #000000;
+    --color-primary: #6b2bff;
+    --color-secondary: #00c6bc;
+    --color-danger: #ff0000;
+    --font-size-5X: 0.5em;
+    --font-size-6X: 0.6em;
+    --font-size-7X: 0.7em;
+    --font-size-8X: 0.8em;
+    --font-size-9X: 0.9em;
+    --font-size-10X: 1em;
+    --font-size-11X: 1.1em;
+    --font-size-12X: 1.2em;
+    --font-size-13X: 1.3em;
+    --font-size-14X: 1.4em;
+    --font-size-15X: 1.5em;
+    --font-size-16X: 1.6em;
+    --font-size-17X: 1.7em;
+    --font-size-18X: 1.8em;
+    --font-size-19X: 1.9em;
+    --font-size-20X: 2em;
+    --font-size-25X: 2.5em;
+    --font-size-30X: 3em;
+    --border-radius: 6px;
+}
+
+html,
+body {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5;
+  background-color: #f9f9f9;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  position: relative;
+  font-size: 16px;
+}
+
+
+

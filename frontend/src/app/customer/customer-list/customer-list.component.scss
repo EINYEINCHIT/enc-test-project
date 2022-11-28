@@ -1,0 +1,7 @@
+::ng-deep {
+    ul.ngx-pagination {
+        li.current {
+            background-color: var(--color-primary);
+        }
+    }
+}
