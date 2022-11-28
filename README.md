@@ -12,4 +12,5 @@
    - go to frontend directory using command line
    - need to download and install 'Node.js'.
    - run 'npm i'
+   - run 'npm install -g @angular/cli'
    - run 'ng s --o'
